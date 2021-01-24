@@ -1,0 +1,18 @@
+pipeline{
+    agent any
+    environment{
+        PATH = "/opt/apache-maven-3.6.3/bin:$PATH"
+    }
+    stages{
+        stage("git chekout"){
+          steps{
+              git 'https://github.com/jabedhasan21/java-hello-world-with-maven.git'
+          }  
+        }
+        stage("maven build"){
+            steps{
+                sh "mvn clean package"
+            }
+        }
+    }
+}
